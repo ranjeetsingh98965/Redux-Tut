@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'dodgerblue',
-    elevation: 10,
+    elevation: 5,
   },
   txt: {
     fontSize: 20,

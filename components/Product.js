@@ -1,7 +1,15 @@
 import React from 'react';
 import {View, Text, Image, StyleSheet, Button} from 'react-native';
+import {useDispatch} from 'react-redux';
+import {addToCart} from '../redux/action';
 
 const Product = props => {
+  const dispatch = useDispatch();
+
+  const handleAddToCart = item => {
+    dispatch(addToCart(item));
+  };
+
   let id = props.item.id;
   return (
     <View style={styles.itemContainer} key={id}>
@@ -21,7 +29,10 @@ const Product = props => {
         </Text>
         <Text style={{fontSize: 15}}>Colour: {props.item.color}</Text>
         <Text style={{fontSize: 15, marginBottom: 5}}>₹{props.item.price}</Text>
-        <Button title="ADD TO CART" />
+        <Button
+          title="ADD TO CART"
+          onPress={() => handleAddToCart(props.item)}
+        />
       </View>
     </View>
   );
@@ -36,7 +47,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#b6dce3',
-    elevation: 10,
+    elevation: 5,
   },
 });
 
