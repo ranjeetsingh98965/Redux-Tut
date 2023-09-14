@@ -1,7 +1,11 @@
 import React from 'react';
 import {View, Text, StyleSheet} from 'react-native';
+import {useSelector} from 'react-redux';
 
 const Header = () => {
+  const cartData = useSelector(state => state.reducer);
+  console.log(cartData);
+
   return (
     <View style={styles.cart}>
       <Text style={styles.txt}>Cart: 0</Text>
