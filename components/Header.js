@@ -1,14 +1,17 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 import {useSelector} from 'react-redux';
 
 const Header = () => {
   const cartData = useSelector(state => state.reducer);
-  console.log(cartData);
+  const [cartItems, setCartItems] = useState(0);
 
+  useEffect(() => {
+    setCartItems(cartData.length);
+  }, [cartData]);
   return (
     <View style={styles.cart}>
-      <Text style={styles.txt}>Cart: 0</Text>
+      <Text style={styles.txt}>Cart: {cartItems}</Text>
     </View>
   );
 };
@@ -25,6 +28,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'dodgerblue',
     elevation: 5,
+    zIndex: 99,
   },
   txt: {
     fontSize: 20,
